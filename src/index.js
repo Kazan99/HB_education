@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const methodOverride = require('method-override');
-const morgan = require('morgan');
+//const morgan = require('morgan');
 const { engine } = require ('express-handlebars');
 const cookieParser = require('cookie-parser')
 
@@ -24,7 +24,9 @@ app.use(cookieParser())
 
 
 // HTTP logger
+
 // app.use(morgan('combined'));
+
 
 // Template engines
 app.engine('hbs', engine({
