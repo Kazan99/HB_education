@@ -2,7 +2,7 @@ const Account = require('../models/Account');
 const authController = require('../auth/AuthController');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
-require('dotenv').config();
+//require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 class SiteController {
