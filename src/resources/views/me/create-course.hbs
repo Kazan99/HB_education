@@ -1,0 +1,35 @@
+<div class="mt-4 ml-4 mb-4">
+    <div class="container">
+        <h3>Новые видео курс</h3>
+
+        <form method="POST" action="/me/course/new">
+
+            <div class="form-group">
+                <label for="name">Названия видео</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="description">Описывать курс видео</label>
+                <input type="text" class="form-control" id="description" name="description">
+            </div>
+            <div class="form-group">
+                <label for="video">ВидеоID</label>
+                <input type="text" class="form-control" id="video" name="video">
+            </div>
+            <div class="form-group">
+                <label for="slug">Названия курс</label>
+
+                <select class="form-control selector-form-control" name="slug" required>
+                    <option value="">--Выбирать курс--</option>
+                    {{#each courses}}
+                    <option value="{{this.slug}}">{{this.slug}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary checkAllSelect">Добавлять курсов</button>
+
+        </form>
+    </div>
+</div>

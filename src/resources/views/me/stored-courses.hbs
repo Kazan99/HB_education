@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="mt-4">
+    <div class="container">
+      <div>
+        <h3>Курс мои</h3>
+        <div class="mt-4 mb-4">
+          <a href="/me/trash/courses" class="text-primary">Корзина ({{deletedCount}})</a>
+          <img src="/img/trash-can-solid.svg" alt="SVG" class="icon-trash">
+        </div>
+      </div>
+
+
+      <table class="table ">
+        <thead>
+          <tr>
+
+            <th scope="col">#</th>
+            <th scope="col">Названия</th>
+            <th scope="col">Описывать курс</th>
+            <th scope="col" colspan="2">Время создания</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each courses}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+              <a href="/me/stored/courses/{{this.slug}}" class="btn btn-link">Заходить</a>
+              <a href="/me/stored/courses/{{this._id}}/edit" class="btn btn-link">Изменить</a>
+              <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}"
+                data-target="#delete-course-modal">Удалить</a>
+                
+              {{!-- <a href="" class="btn btn-link" data-bs-toggle="modal" data-id="{{this._id}}"
+                data-bs-target="#delete-course-modal">Удалить</a> --}}
+            </td>
+          </tr>
+          {{else}}
+          <tr>
+            <td colspan="5" class="text-center">
+              Вы еще не разместили ни одного курса.
+              <a href="/me/create" class="text-primary">Опубликовать курс</a>
+            </td>
+          </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{{!-- Confirm delete courses --}}
+<div id="delete-course-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Удалить курс</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Вы точно хотите удалить это курс ?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Удалить</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрывать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form name="delete-course-form" method="POST"></form>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    var CourseId;
+    var btnDeleteCourse = document.getElementById('btn-delete-course');
+    var deleteForm = document.forms['delete-course-form'];
+
+    // When dialog confirm clicked
+    $('#delete-course-modal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      CourseId = button.data('id');
+
+    });
+
+    btnDeleteCourse.onclick = function () {
+      deleteForm.action = '/me/courses/' + CourseId + '?_method=DELETE';
+      deleteForm.submit();
+    }
+  });
+
+</script>
+
+
+
+<!-- Modal -->
+{{!-- <div class="modal fade" id="delete-course-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+

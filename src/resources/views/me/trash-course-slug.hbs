@@ -1,0 +1,109 @@
+<div class="mt-4">
+    <div class="container ">
+        <div class="mb-4">
+          <div class="mt-4 mb-2">
+            <a href="/me/stored/courses/{{courseSlug.slug}}" class="text-primary">Вернуть на видео уроке</a>
+            <img src="/img/arrow-rotate-left-solid.svg" alt="SVG" class="icon-trash">
+          </div>
+          <h3>Видео уроке уже удалить</h3>
+        </div>
+      
+      
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">#</th>
+                    <th scope="col">Названия видео</th>
+                    <th scope="col">Описывать видео курс</th>
+                    <th scope="col" colspan="2">Время создания</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {{#each courses}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.createdAt}}</td>
+                    <td>
+                        <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" data-slug="{{this.slug}}">Восстановить</a>
+                        <a href="" class="btn btn-link"data-toggle="modal" data-id="{{this._id}}" data-slug="{{this.slug}}" data-target="#delete-courses-modal">Удалить навсегда</a>
+                    </td>
+                </tr>
+                {{else}}
+                <tr>
+                  <td colspan="5" class="text-center">
+                    Пустой корзина. 
+                    <a href="/me/stored/courses/{{courseSlug.slug}}" class="text-primary">Список видео уроке</a>
+                  </td>
+                </tr>
+                {{/each}}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{!-- Confirm delete courses --}}
+<div id="delete-courses-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Удалить видео урок</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Это действие не может быть отменить. Вы уверены, что хотите удалить этот видео уроке???</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-courses" type="button" class="btn btn-danger">Удалить</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрывать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form name="delete-courses-form" method="POST"></form>
+<form name="restore-course-form" method="POST"></form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var CourseId;
+        var CourseSlug;
+        var btnDeleteCourse = document.getElementById('btn-delete-courses');
+        var deleteForm = document.forms['delete-courses-form'];
+        var restoreForm = document.forms['restore-course-form'];
+        var restoreBtn = $('.btn-restore');
+
+        // When dialog confirm clicked
+        $('#delete-courses-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            CourseId = button.data('id');
+            CourseSlug = button.data('slug');
+        
+        });
+
+        btnDeleteCourse.onclick = function () {
+            deleteForm.action = '/me/stored/courses/'+ CourseSlug +'/' + CourseId + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
+
+        // Restore btn clicked
+        restoreBtn.click(function(e) {
+            e.preventDefault();
+            
+            var courseId = $(this).data('id');
+            var courseSlug =$(this).data('slug');
+            restoreForm.action = '/me/courses/'+ courseSlug + '/' + courseId + '/restore?_method=PATCH';
+            restoreForm.submit();
+        });
+    });
+
+</script>

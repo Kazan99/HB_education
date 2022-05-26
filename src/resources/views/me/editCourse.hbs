@@ -1,0 +1,23 @@
+<div class="mt-4 ml-4">
+    <h3>Обновление видео курса</h3>
+
+    <form class="mt-4" method="POST" action="/me/stored/courses/{{course.slug}}/{{course._id}}?_method=PUT">
+
+        <div class="form-group">
+            <label for="name">Названия видео курс</label>
+            <input type="text" class="form-control" value="{{course.name}}" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="description">Описывать видео курс</label>
+            <textarea  class="form-control" id="description" name="description">{{course.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="video">ВидеоID</label>
+            <input type="text" class="form-control" value="{{course.video}}" id="video" name="video">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Сохранять</button>
+        
+    </form>
+</div>

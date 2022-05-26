@@ -1,0 +1,28 @@
+<div class="mt-4 ml-4 mb-4">
+    <div class="container">
+        <h3>Опубликовать новые курс</h3>
+
+        <form method="POST" action="/me/store">
+
+            <div class="form-group">
+                <label for="name">Названия курс</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="description">Описывать курс</label>
+                <input type="text" class="form-control" id="description" name="description">
+            </div>
+            <div class="form-group">
+                <label for="image">Фотка ID</label>
+                <input type="text" class="form-control" id="image" name="image">
+            </div>
+            <div class="form-group">
+                <label for="slug">slugId</label>
+                <input type="text" class="form-control" id="slug" name="slug">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Добавлять курсов</button>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.card-title {
+  font-weight: bolder; }
+
+.selector-form-control {
+  width: 250px; }
+
+.row {
+  display: flex; }
+
+.row_right {
+  background-color: #eff3f7;
+  margin-top: -24px;
+  margin-bottom: -24px; }
+
+.list_title {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: black; }
+
+.row_right ul li a {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: white; }
+
+.row_right ul li.active {
+  background: rgba(177, 229, 179, 0.932); }
+
+.codeOnl {
+  color: black; }

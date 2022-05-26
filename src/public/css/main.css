@@ -1,0 +1,12 @@
+body {
+  background-color: rgba(105, 201, 110, 0.534);
+  border-left: 20px; }
+
+.web {
+  display: block;
+  font-size: 100%;
+  border-left: 20px;
+  margin-bottom: 0px; }
+
+.container {
+  max-width: 100%; }

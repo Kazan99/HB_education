@@ -1,18 +1,51 @@
-<div class="head_main">
-        <div class="head_logo">
-            <a href="/">
-                <img src="./img/logo.jpg" alt="HT">
-            </a>
-            <h4 class="head_logo_text">Изучите программирование для работы</h4>
-        </div>
-        <div class="head_search d-flex-center">
-            <div class="head_search_wrapper">
-                <img src="./img/magnifying-glass-solid.svg" alt="HT" class="head_search_icon">
-                <input class="head_search_input" placeholder="Ищите курсы, статьи, видео,...">
-            </div>
+<div class="header-main">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/img/logo.jpg" alt="HB" class="img_head">
+        education
+      </a>
 
-        </div>
-        <div class="head_login">
-            <a href="https://accounts.fullstack.edu.vn/login" class="NavBar_loginBtn__5DxZL">Авторизоваться</a>
-        </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/new">Обучения</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/courses">Курс</a>
+        </li>
+      </ul>
+
+      <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          {{#if UserName}}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="/img/logo.jpg" alt="HB" class="img_head_min">
+              {{UserName}}
+
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/me/create">Добавить курсов</a>
+              <a class="dropdown-item" href="/me/course/add">Добавить видео уроки</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/me/stored/courses">Мои курсов</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">Выход</a>
+            </div>
+          </li>
+          {{else}}
+          <a class="btn btn-success" href="/login">Вход</a>
+          {{/if}}
+        </ul>
+      </div>
     </div>
+  </nav>
+</div>

@@ -1,0 +1,23 @@
+<div class="mt-4 ml-4">
+    <h3>Обновление курса</h3>
+
+    <form class="mt-4" method="POST" action="/me/courses/{{course._id}}?_method=PUT">
+
+        <div class="form-group">
+            <label for="name">Названия курс</label>
+            <input type="text" class="form-control" value="{{course.name}}" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="description">Описывать курс</label>
+            <textarea  class="form-control" id="description" name="description">{{course.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Фотка ID</label>
+            <input type="text" class="form-control" value="{{course.image}}" id="image" name="image">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Сохранять</button>
+        
+    </form>
+</div>

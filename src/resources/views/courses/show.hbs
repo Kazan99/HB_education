@@ -1,0 +1,51 @@
+<div class="mt-4 mb-4">
+    <div class="row">
+        <div class="row_left col-lg-9">
+            <div class="ml-4">
+                <div class="text-center">
+                    <h2 class="mb-2">{{courseID.name}}</h2>
+                    <iframe width="1050" height="600"
+                        src="https://www.youtube.com/embed/{{courseID.video}}" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <p> {{courseID.description}}</p>
+
+                <h2 class="mt-4">Для писать коды и делать упражнения:</h2>
+                <div>
+                    <h5 class="mt-4">Для онлайн: </h5>
+                    <a href="https://codesandbox.io/signin?continue=/dashboard" class="codeOnl">
+                        CodeSandbox
+                    </a>
+                    <a href="http://cssdeck.com/labs" class="codeOnl">
+                        Cssdeck
+                    </a>
+                    
+                </div>
+                <div>
+                    <h5 class="mt-4">Для офлайн: </h5>
+                    <a href="https://code.visualstudio.com/Download" class="codeOnl">
+                        visual Studio Code
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row_right col-lg-3">
+
+            <h2 class="ml-4 mt-2 mb-2"> Список уроке {{courses.slug}}</h2>
+            <ul>
+                {{#each course}}
+                <li class="list ml-5 mt-2">
+                    <a href="?_id={{this._id}}">
+                        <span class="list_title" data-id="{{this._id}}">{{this.name}}</span>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="mt-4">
+    <div class="container ">
+        <div class="mb-4">
+          <div class="mt-4">
+            <a href="/me/stored/courses" class="text-primary">Список курсов</a>
+            <img src="/img/arrow-rotate-left-solid.svg" alt="SVG" class="icon-trash">
+          </div>
+          <h3>Курс уже удалить</h3>
+        </div>
+
+
+        <table class="table ">
+            <thead>
+                <tr>
+
+                    <th scope="col">#</th>
+                    <th scope="col">Названия</th>
+                    <th scope="col">Описывать курс</th>
+                    <th scope="col" colspan="2">Время создания</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {{#each courses}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.createdAt}}</td>
+                    <td>
+                        <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Восстановить</a>
+                        <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Удалить навсегда</a>
+                    </td>
+                </tr>
+                {{else}}
+                <tr>
+                  <td colspan="5" class="text-center">
+                    Пустой корзина. 
+                    <a href="/me/stored/courses" class="text-primary">Список курсов</a>
+                  </td>
+                </tr>
+                {{/each}}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{!-- Confirm delete courses --}}
+<div id="delete-course-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Удалить курс</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Это действие не может быть отменить. Вы уверены, что хотите удалить этот курс???</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Удалить</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрывать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form name="delete-course-form" method="POST"></form>
+<form name="restore-course-form" method="POST"></form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var CourseID;
+        var btnDeleteCourse = document.getElementById('btn-delete-course');
+        var deleteForm = document.forms['delete-course-form'];
+        var restoreForm = document.forms['restore-course-form'];
+        var restoreBtn = $('.btn-restore');
+
+        // When dialog confirm clicked
+        $('#delete-course-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            CourseID = button.data('id');
+        
+        });
+
+        btnDeleteCourse.onclick = function () {
+            deleteForm.action = '/me/courses/' + CourseID + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
+
+        // Restore btn clicked
+        restoreBtn.click(function(e) {
+          e.preventDefault();
+          
+          var courseId = $(this).data('id');
+          restoreForm.action = '/me/courses/' + courseId + '/restore?_method=PATCH';
+          restoreForm.submit();
+        });
+    });
+
+</script>
