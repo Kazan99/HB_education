@@ -24,7 +24,7 @@ app.use(cookieParser())
 
 
 // HTTP logger
-app.use(morgan('combined'));
+//app.use(morgan('combined'));
 
 // Template engines
 app.engine('hbs', engine({
