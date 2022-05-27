@@ -34,7 +34,8 @@
     "mongoose": "^6.3.1",
     "mongoose-delete": "^0.5.4",
     "mongoose-slug-generator": "^1.0.4",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "telegraf": "^4.8.2"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
