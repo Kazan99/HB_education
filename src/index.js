@@ -14,7 +14,7 @@ telegram.telegram_connect();
 
 
 // Connect to DB
-db.connect();
+//db.connect();
 
 
 const app = express();
