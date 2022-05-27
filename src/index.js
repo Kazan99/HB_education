@@ -18,7 +18,7 @@ db.connect();
 
 
 const app = express();
-const port = 9229;
+const port = 3000;
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
