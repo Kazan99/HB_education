@@ -7,7 +7,7 @@ const AuthController = {
         return jwt.sign(
             {
                 _id: user.id,
-                admin: user.role 
+                admin: user.role,
             },
             process.env.Access,
             { expiresIn: "90d" }
@@ -19,7 +19,7 @@ const AuthController = {
         return jwt.sign(
             {
                 _id: user.id,
-                admin: user.role 
+                admin: user.role,
             },
             process.env.Refresh,
             { expiresIn: "365d" }

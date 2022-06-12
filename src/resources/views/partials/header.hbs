@@ -11,9 +11,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/new">Обучения</a>
         </li>
@@ -28,18 +26,29 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
+              {{#if (Admin UserRole)}}
               <img src="/img/logo.jpg" alt="HB" class="img_head_min">
+              {{else}}
+              <img src="https://static.fullstack.edu.vn/static/media/fallback-avatar.155cdb2376c5d99ea151.jpg" alt="" class="img_head_min">
+              {{/if}}
               {{UserName}}
-
             </a>
+            
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/me/create">Добавить курсов</a>
-              <a class="dropdown-item" href="/me/course/add">Добавить видео уроки</a>
+              {{#if (Admin UserRole)}}
+              <a class="dropdown-item" href="/me/create">Добавить курс</a>
+              <a class="dropdown-item" href="/me/course/add">Добавить видео в курс</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/me/stored/courses">Мои курсов</a>
+              <a class="dropdown-item" href="/me/stored/courses">Мои курсы</a>
+              <a class="dropdown-item" href="/me/stored/user">Список пользователей</a>
+              {{else}}
+              <a class="dropdown-item" href="/users/info">Мои данные</a>
+              <a class="dropdown-item" href="/users/my/course">Мои курсы</a>
+              {{/if}}
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Выход</a>
             </div>
+            
           </li>
           {{else}}
           <a class="btn btn-success" href="/login">Вход</a>

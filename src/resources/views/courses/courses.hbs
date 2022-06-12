@@ -9,7 +9,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{this.name}}</h5>
                         <p class="card-text">{{this.description}}</p>
-                        <a href="/courses/{{this.slug}}" class="btn btn-primary">Начать</a>
+                        {{!-- <a href="/courses/{{this.slug}}" class="btn btn-primary">Начать</a> --}}
+                        <a href="" class="btn btn-primary btn-save" data-slug="{{this.slug}}" id="btn-save-courses">Начать</a>
                     </div>
                 </div>
             </div>
@@ -18,3 +19,29 @@
         </div>
     </div>
 </div>
+
+<form name="save-courses-form" method="POST"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+
+        var CourseSlug;
+
+        var saveForm = document.forms['save-courses-form'];
+        var saveBtn = $('.btn-save');
+
+
+        saveBtn.click(function(e) {
+          e.preventDefault();
+          
+          var CourseSlug = $(this).data('slug');
+          saveForm.action = '/courses/' + CourseSlug + '/save?_method=PUT';
+          saveForm.submit();
+
+        });
+
+        
+    });
+
+</script>

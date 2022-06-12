@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="mt-4">
+    <div class="container">
+      <div>
+        <h3>Список пользователь уже удалить</h3>
+        <div class="mt-4 mb-2">
+            <a href="/me/stored/user" class="text-primary">Список пользователь</a>
+            <img src="/img/arrow-rotate-left-solid.svg" alt="SVG" class="icon-trash">
+          </div>
+      </div>
+
+
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ф.И.О</th>
+            <th scope="col">Электронный почта</th>
+            <th scope="col">Пароль</th>
+            <th scope="col">Роли</th>
+            <th scope="col" colspan="2">Время создания</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each user}}
+          <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.nameUser}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.password}}</td>
+            <td>{{this.role}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+              <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Восстановить</a>
+              <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-user-modal">Удалить навсегда</a>
+            </td>
+          </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{{!-- Confirm delete user --}}
+<div id="delete-user-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Удалить пользователь</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Это действие не может быть отменено. Вы уверены, что хотите удалить этот пользователь ?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-user" type="button" class="btn btn-danger">Удалить</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрывать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form name="delete-user-form" method="POST"></form>
+<form name="restore-user-form" method="POST"></form>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+        var CourseID;
+        var btnDeleteCourse = document.getElementById('btn-delete-user');
+        var deleteForm = document.forms['delete-user-form'];
+        var restoreForm = document.forms['restore-user-form'];
+        var restoreBtn = $('.btn-restore');
+
+        // When dialog confirm clicked
+        $('#delete-user-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            CourseID = button.data('id');
+        
+        });
+
+        btnDeleteCourse.onclick = function () {
+            deleteForm.action = '/me/user/' + CourseID + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
+
+        // Restore btn clicked
+        restoreBtn.click(function(e) {
+          e.preventDefault();
+          
+          var courseId = $(this).data('id');
+          restoreForm.action = '/me/user/' + courseId + '/restore?_method=PATCH';
+          restoreForm.submit();
+        });
+    });
+</script>
+
+
+
+<!-- Modal -->
+{{!-- <div class="modal fade" id="delete-course-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+

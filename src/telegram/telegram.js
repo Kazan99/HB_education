@@ -21,7 +21,7 @@ function telegram_connect() {
         } catch(error) {
             console.error(error);
         }
-    })
+    });
 
     function addActionBot(name, src, text)
     {
@@ -40,7 +40,7 @@ function telegram_connect() {
                 console.error(e);
             }
         })
-    }
+    };
 
     addActionBot('btn_1','https://i.ytimg.com/vi/Sda2kF9y9Gw/maxresdefault.jpg' , text_const.text1);
     addActionBot('btn_2','https://i.ytimg.com/vi/Fw679JPOo0w/maxresdefault.jpg', text_const.text2 );
@@ -48,12 +48,12 @@ function telegram_connect() {
     addActionBot('btn_4','https://i.ytimg.com/vi/ob9qRQeajA0/maxresdefault.jpg', text_const.text4 );
     addActionBot('btn_5','https://i.ytimg.com/vi/TZSY6rDUDrE/maxresdefault.jpg', text_const.text5 );
 
-    bot.launch()
+    bot.launch();
 
 
     // Enable graceful stop
-    process.once('SIGINT', () => bot.stop('SIGINT'))
-    process.once('SIGTERM', () => bot.stop('SIGTERM'))
-}
+    process.once('SIGINT', () => bot.stop('SIGINT'));
+    process.once('SIGTERM', () => bot.stop('SIGTERM'));
+};
 
 module.exports = {telegram_connect};

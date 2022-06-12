@@ -1,51 +1,88 @@
-<div class="mt-4 mb-4">
-    <div class="row">
-        <div class="row_left col-lg-9">
-            <div class="ml-4">
-                <div class="text-center">
-                    <h2 class="mb-2">{{courseID.name}}</h2>
-                    <iframe width="1050" height="600"
-                        src="https://www.youtube.com/embed/{{courseID.video}}" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <p> {{courseID.description}}</p>
+<div class="container">
+    <div class="mt-4 mb-4">
 
-                <h2 class="mt-4">Для писать коды и делать упражнения:</h2>
-                <div>
-                    <h5 class="mt-4">Для онлайн: </h5>
-                    <a href="https://codesandbox.io/signin?continue=/dashboard" class="codeOnl">
-                        CodeSandbox
-                    </a>
-                    <a href="http://cssdeck.com/labs" class="codeOnl">
-                        Cssdeck
-                    </a>
-                    
-                </div>
-                <div>
-                    <h5 class="mt-4">Для офлайн: </h5>
-                    <a href="https://code.visualstudio.com/Download" class="codeOnl">
-                        visual Studio Code
-                    </a>
+        <div class="row">
+            <div class="row_left col-lg-9">
+                <div class="ml-4">
+                    <div class="text-center">
+                        <h2 class="mb-2">{{courseID.name}}</h2>
+                        <iframe width="1000" height="600" src="https://www.youtube.com/embed/{{courseID.video}}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p> {{courseID.description}}</p>
+
+                    <div>
+                        <h2 class="mt-4">Онлайн написание кода: </h2>
+                        <a href="https://codesandbox.io/signin?continue=/dashboard" class="codeOnl">
+                            <img src="https://media.licdn.cn/dms/image/C4E0BAQHdkW_7svYbzw/company-logo_200_200/0/1638472621250?e=2159024400&v=beta&t=LFV-jqGeCQdmqmG12nfDN96xuPSsb3bqKKtDu3NDVzI"
+                                alt="" class="img-item">
+                            CodeSandbox
+                        </a>
+                        <br>
+                        <a href="http://cssdeck.com/labs" class="codeOnl">
+                            <img src="data:image/png;base64,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"
+                                alt="" class="img-item">
+                            Cssdeck
+                        </a>
+
+                    </div>
+                    <div>
+                        <h2 class="mt-4">Офлайн написание кода: </h2>
+                        <a href="https://code.visualstudio.com/Download" class="codeOnl">
+                            <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/01/000-VS-Code.png"
+                                alt="" class="img-item">
+
+                            visual Studio Code
+                        </a>
+                    </div>
+
+                    <div>
+                        <div>
+                            <h2 class="mt-4">Контакт онлайн: </h2>
+                            <a href="https://discord.gg/3sGqXJ2C" class="codeOnl">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfBfV3f2oaON4jb5245Pa3AQe0XmlGpKoL3kaOe7NgY_zDwKeLUrtN8tXYP7yBzV-zggQ&usqp=CAU"
+                                    alt="" class="img-item">
+                                Discord
+                            </a>
+                            <br>
+                            <a href="https://vk.com/im?peers=c78_-213619306&sel=c77" class="codeOnl">
+                                <img src="data:image/png;base64,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"
+                                    alt="" class="img-item">
+                                VK
+                            </a>
+
+                        </div>
+                        {{!-- <div>
+                            <h5 class="mt-4">Для офлайн: </h5>
+                            <a href="https://2gis.ru/kazan/firm/2956470803008207?m=49.137854%2C55.794372%2F17.31"
+                                class="codeOnl">
+                                <img src="https://hometarget.gr/assets/global/img/properties/fa-home.png" alt=""
+                                    class="img-item">
+                                Приходится на это адресс
+                            </a>
+                        </div> --}}
+                    </div>
                 </div>
             </div>
+
+            <div class="row_right col-lg-3">
+
+                <h2 class="ml-4 mt-2 mb-2"> Навигация по курсу </h2>
+                <ul>
+                    {{#each course}}
+                    <li class="list mt-2">
+                        <a href="?_id={{this._id}}">
+                            <span class="list_title" data-id="{{this._id}}">{{this.name}}</span>
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+
+            </div>
+
         </div>
-
-        <div class="row_right col-lg-3">
-
-            <h2 class="ml-4 mt-2 mb-2"> Список уроке {{courses.slug}}</h2>
-            <ul>
-                {{#each course}}
-                <li class="list ml-5 mt-2">
-                    <a href="?_id={{this._id}}">
-                        <span class="list_title" data-id="{{this._id}}">{{this.name}}</span>
-                    </a>
-                </li>
-                {{/each}}
-            </ul>
-
-        </div>
-
     </div>
 </div>
+

@@ -9,7 +9,7 @@ const middlewareController = {
         if (token) {
             jwt.verify(token, process.env.Access, (err, user) => {
                 if (err) {
-                    res.status(403).json('Token is not vaid');
+                    res.status(403).render('error');
                 }
                 res.user = user;
                 //console.log(user);
@@ -17,7 +17,7 @@ const middlewareController = {
             });
         }
         else {
-            res.status(401).json("You're not Authenticated");
+            res.status(401).redirect(`/login`);
         }
     },
 

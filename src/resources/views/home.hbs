@@ -2,11 +2,20 @@
     <div class="container">
         <div class="box1">
             <h2 class="text1_home">Добро пожаловать на наш курс</h2>
+            <h2 class="text2_home">Здесь вы можете следовать своей мечте программиста</h2>
         </div>
-        <a href="/new">
+        {{#if UserName}}
+        <a href="/courses">
             <div class="box2">
-                <h2 class="text2_home">Присоединяйся сейчас</h2>
+                <h2 class="text3_home">Присоединяйся сейчас</h2>
             </div>
         </a>
+        {{else}}
+        <a href="/login">
+            <div class="box2">
+                <h2 class="text3_home">Присоединяйся сейчас</h2>
+            </div>
+        </a>
+        {{/if}}
     </div>
 </div>

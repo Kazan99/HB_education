@@ -5,7 +5,7 @@
             <a href="/me/stored/courses/{{courseSlug.slug}}" class="text-primary">Вернуть на видео уроке</a>
             <img src="/img/arrow-rotate-left-solid.svg" alt="SVG" class="icon-trash">
           </div>
-          <h3>Видео уроке уже удалить</h3>
+          <h3>Видео уроке уже удален</h3>
         </div>
       
       
@@ -14,9 +14,9 @@
                 <tr>
 
                     <th scope="col">#</th>
-                    <th scope="col">Названия видео</th>
-                    <th scope="col">Описывать видео курс</th>
-                    <th scope="col" colspan="2">Время создания</th>
+                    <th scope="col">Название видео уроке</th>
+                    <th scope="col">Описание видео уроке</th>
+                    <th scope="col" colspan="2">Время удаления</th>
 
                 </tr>
             </thead>
@@ -26,7 +26,7 @@
                     <th scope="row">{{sum @index 1}}</th>
                     <td>{{this.name}}</td>
                     <td>{{this.description}}</td>
-                    <td>{{this.createdAt}}</td>
+                    <td>{{this.deletedAt}}</td>
                     <td>
                         <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" data-slug="{{this.slug}}">Восстановить</a>
                         <a href="" class="btn btn-link"data-toggle="modal" data-id="{{this._id}}" data-slug="{{this.slug}}" data-target="#delete-courses-modal">Удалить навсегда</a>
@@ -57,7 +57,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Это действие не может быть отменить. Вы уверены, что хотите удалить этот видео уроке???</p>
+        <p>Это действие не может быть отменено. Вы уверены, что хотите удалить этот видео уроке???</p>
       </div>
       <div class="modal-footer">
         <button id="btn-delete-courses" type="button" class="btn btn-danger">Удалить</button>

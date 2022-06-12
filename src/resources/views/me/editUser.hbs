@@ -1,0 +1,27 @@
+<div class="mt-4 ml-4 mb-4">
+    <h3>Обновление пользователь</h3>
+
+    <form class="mt-4" method="POST" action="/me/user/{{user._id}}?_method=PUT">
+
+        <div class="form-group">
+            <label for="name">Ф.И.О</label>
+            <input type="text" class="form-control" value="{{user.nameUser}}" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Электронный почта</label>
+            <input type="text" class="form-control" value="{{user.email}}" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="text" class="form-control" value="{{user.password}}" id="password" name="password">
+        </div>
+        <div class="form-group">
+            <label for="role">Роль</label>
+            <input type="text" class="form-control" value="{{user.role}}" id="role" name="role">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Сохранять</button>
+        
+    </form>
+</div>
