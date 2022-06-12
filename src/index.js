@@ -15,7 +15,7 @@ const test = require('./util/test');
 
 
 // Connect to DB
-db.connect();
+//db.connect();
 
 //test web
 test.searchTextOnGoogle();
