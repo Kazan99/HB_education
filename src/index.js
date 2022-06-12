@@ -8,17 +8,21 @@ const cookieParser = require('cookie-parser')
 const route = require('./routes');
 const db  = require('./config/db');
 const telegram = require('./telegram/telegram');
+const test = require('./util/test');
 
 // Connect to telegram
-telegram.telegram_connect();
+//telegram.telegram_connect();
 
 
 // Connect to DB
 //db.connect();
 
+//test web
+test.searchTextOnGoogle();
+
 
 const app = express();
-const port = 3000;
+const port = 3100;
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
@@ -38,8 +42,10 @@ app.use(cookieParser());
 app.engine('hbs', engine({
   extname: '.hbs',
   helpers: {
-    sum: (a, b) => a +b,
-  }
+    sum: (a, b) => a + b,
+    Admin: (value) => {return value == 'admin'},
+  },
+
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources','views'));
